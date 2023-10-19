@@ -20,15 +20,15 @@ func _process(delta):
 	
 	if $AnimatedSprite2D.flip_h:
 		if velocity.y > 0:
-			$AnimatedSprite2D.rotation = (-PI / 2)
+			$AnimatedSprite2D.rotation = (-PI / 2) + (-PI / 4) * velocity.sign().x
 		else: if velocity.y < 0:
-			$AnimatedSprite2D.rotation = (PI / 2)
+			$AnimatedSprite2D.rotation = (PI / 2) + (PI / 4) * velocity.sign().x
 		else:
 			$AnimatedSprite2D.rotation = 0
 	else:
 		if velocity.y > 0:
-			$AnimatedSprite2D.rotation = (PI / 2)
+			$AnimatedSprite2D.rotation = (PI / 2) + (-PI / 4) * velocity.sign().x
 		else: if velocity.y < 0:
-			$AnimatedSprite2D.rotation = (-PI / 2)
+			$AnimatedSprite2D.rotation = (-PI / 2) + (PI / 4) * velocity.sign().x
 		else:
 			$AnimatedSprite2D.rotation = 0
