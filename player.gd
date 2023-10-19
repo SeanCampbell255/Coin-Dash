@@ -1,8 +1,18 @@
 extends Area2D
+## Signals
+signal pickup
+signal hurt
 
+## Variables
 @export var speed = 350
 var velocity = Vector2.ZERO
 var screensize = Vector2(480, 720)
+
+func start():
+	## Init
+	set_process(true)
+	position = screensize / 2
+	$AnimatedSprite2D.animation = "idle"
 
 func _process(delta):
 	## Inputs -> Movement
@@ -34,3 +44,18 @@ func _process(delta):
 		$AnimatedSprite2D.rotation = 0
 	## For when sprite is flipped and moving only along y
 	if $AnimatedSprite2D.flip_h && velocity.y && !velocity.x: $AnimatedSprite2D.rotation += PI
+
+## Custom Functions
+
+func die():
+	$AnimatedSprite2D.animation = "hurt"
+	set_process(false)
+
+
+func _on_area_entered(area):
+	if area.is_in_group("coins"):
+		area.pickup()
+		pickup.emit()
+	if area.is_in_group("obstacles"):
+		hurt.emit()
+		die()
