@@ -18,17 +18,30 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	
-	if $AnimatedSprite2D.flip_h:
-		if velocity.y > 0:
-			$AnimatedSprite2D.rotation = (-PI / 2) + (-PI / 4) * velocity.sign().x
-		else: if velocity.y < 0:
-			$AnimatedSprite2D.rotation = (PI / 2) + (PI / 4) * velocity.sign().x
-		else:
-			$AnimatedSprite2D.rotation = 0
+	var xdirection = velocity.sign().x
+	var ydirection = velocity.sign().y
+#	if $AnimatedSprite2D.flip_h:
+#		if velocity.y > 0:
+#			$AnimatedSprite2D.rotation = (-PI / 2) + (-PI / 4) * xdirection
+#		else: if velocity.y < 0:
+#			$AnimatedSprite2D.rotation = (PI / 2) + (PI / 4) * xdirection
+#		else:
+#			$AnimatedSprite2D.rotation = 0
+#	else:
+#		if velocity.y > 0:
+#			$AnimatedSprite2D.rotation = (PI / 2) + (-PI / 4) * xdirection
+#		else: if velocity.y < 0:
+#			$AnimatedSprite2D.rotation = (-PI / 2) + (PI / 4) * xdirection
+#		else:
+#			$AnimatedSprite2D.rotation = 0
+	if xdirection < 0:
+		xdirection *= 3
 	else:
-		if velocity.y > 0:
-			$AnimatedSprite2D.rotation = (PI / 2) + (-PI / 4) * velocity.sign().x
-		else: if velocity.y < 0:
-			$AnimatedSprite2D.rotation = (-PI / 2) + (PI / 4) * velocity.sign().x
-		else:
-			$AnimatedSprite2D.rotation = 0
+		xdirection *= -1
+	
+	if velocity.y < 0:
+		$AnimatedSprite2D.rotation = (-PI / 2) + (-PI / 4) * xdirection
+	else: if velocity.y > 0:
+		$AnimatedSprite2D.rotation = (PI / 2) + (PI / 4) * xdirection
+	else:
+		$AnimatedSprite2D.rotation = 0
