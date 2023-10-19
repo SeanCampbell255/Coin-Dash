@@ -10,6 +10,7 @@ func _process(delta):
 	position += velocity * speed * delta
 	position.x = clamp(position.x, 15, screensize.x - 15)
 	position.y = clamp(position.y, 25, screensize.y - 25)
+	
 	## Movement -> Animation
 	if velocity.length() > 0:
 		$AnimatedSprite2D.animation = "run"
@@ -17,6 +18,7 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "idle"
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+		
 	## Movement -> Rotation
 	var xdirection = velocity.sign().x
 	if xdirection < 0:
@@ -30,4 +32,5 @@ func _process(delta):
 		$AnimatedSprite2D.rotation = (PI / 2) + (PI / 4) * xdirection
 	else:
 		$AnimatedSprite2D.rotation = 0
-	if $AnimatedSprite2D.flip_h && velocity.y && !velocity.x: $AnimatedSprite2D.rotation += PI #
+	## For when sprite is flipped and moving only along y
+	if $AnimatedSprite2D.flip_h && velocity.y && !velocity.x: $AnimatedSprite2D.rotation += PI
