@@ -1,5 +1,4 @@
-res://player.tscn
-res://player.gd
-res://coin.tscn
-res://coin.gd
 res://main.tscn
+res://main.gd
+res://player.tscn
+res://coin.tscn
