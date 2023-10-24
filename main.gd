@@ -14,6 +14,12 @@ func _ready():
 	$Player.screensize = screensize
 	$Player.hide()
 
+func _process(_delta):
+	if playing and get_tree().get_nodes_in_group("coins").size() == 0:
+		level += 1
+		time_left += 5
+		spawn_coins()
+
 func new_game():
 	playing = true
 	level = 1
@@ -59,7 +65,3 @@ func _on_player_hurt():
 func _on_player_pickup():
 	score += 1
 	$HUD.update_score(score)
-	if playing and get_tree().get_nodes_in_group("coins").size() == 1:
-		level += 1
-		time_left += 5
-		spawn_coins()
