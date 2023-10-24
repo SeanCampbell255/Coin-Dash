@@ -2,3 +2,5 @@ res://main.tscn
 res://main.gd
 res://player.tscn
 res://coin.tscn
+res://HUD.tscn
+res://HUD.gd

@@ -1,4 +1,8 @@
+Button
 Timer
+MarginContainer
+Label
+CanvasLayer
 TextureRect
 Node
 CollisionShape2D

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://iddyx1iau8ck"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_jpw60"]
+[ext_resource type="FontFile" uid="uid://ccl5q1f0ku4vb" path="res://assets/Kenney Bold.ttf" id="1_tqtcl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pssbj"]
+font = ExtResource("1_tqtcl")
+font_size = 48
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0.839216, 0.0509804, 0.580392, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_jpw60")
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Coin Dash!"
+label_settings = SubResource("LabelSettings_pssbj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Score" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_pssbj")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_pssbj")
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -56.0
+offset_right = 84.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.839216, 0.0509804, 0.580392, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_tqtcl")
+theme_override_font_sizes/font_size = 32
+text = " Start"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
