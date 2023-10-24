@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnfv1hnjll0si"]
+[gd_scene load_steps=12 format=3 uid="uid://bnfv1hnjll0si"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_galqk"]
 [ext_resource type="PackedScene" uid="uid://bk15mqisum647" path="res://player.tscn" id="1_owmks"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://xoqnwoawjan2" path="res://assets/audio/Level.wav" id="7_n1opw"]
 [ext_resource type="AudioStream" uid="uid://cvltbrcg1ql40" path="res://assets/audio/EndSound.wav" id="8_4oyl4"]
 [ext_resource type="AudioStream" uid="uid://7abv101amthc" path="res://assets/audio/Powerup.wav" id="9_3x5mn"]
+[ext_resource type="PackedScene" uid="uid://bgc7f2ne3exo4" path="res://cactus.tscn" id="11_ci6a7"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_galqk")
@@ -46,6 +47,9 @@ stream = ExtResource("9_3x5mn")
 [node name="PowerupTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Cactus" parent="." instance=ExtResource("11_ci6a7")]
+position = Vector2(354, 256)
 
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
