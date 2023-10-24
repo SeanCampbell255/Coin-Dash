@@ -5,3 +5,6 @@ res://coin.tscn
 res://HUD.tscn
 res://HUD.gd
 res://coin.gd
+res://powerup.tscn
+res://powerup.gd
+res://player.gd

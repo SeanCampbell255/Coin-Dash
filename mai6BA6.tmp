@@ -14,6 +14,7 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_galqk")
 coin_scene = ExtResource("2_3jr8s")
+playtime = null
 powerup_scene = ExtResource("3_ama30")
 
 [node name="Background" type="TextureRect" parent="."]

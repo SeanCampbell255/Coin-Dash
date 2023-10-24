@@ -2,9 +2,6 @@ extends Area2D
 
 var screensize = Vector2.ZERO
 
-func _ready():
-	$Timer.start(randf_range(1, 8))
-
 func pickup():
 	$CollisionShape2D.set_deferred("disabled", true)
 	var tw = create_tween().set_parallel().set_trans(Tween.TRANS_QUAD)
@@ -14,6 +11,5 @@ func pickup():
 	queue_free()
 
 
-func _on_timer_timeout():
-	$AnimatedSprite2D.frame = 0
-	$AnimatedSprite2D.play()
+func _on_lifetime_timeout():
+	queue_free()
